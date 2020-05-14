@@ -5,7 +5,7 @@ const passport = require('passport')
 
 // pull in Mongoose models for recipe and ingredient
 const Recipe = require('../models/recipe')
-const Ingredient = require('../models/ingredient')
+// const Ingredient = require('../models/ingredient')
 
 // this is a collection of methods that help us detect situations when we need
 // to throw a custom error
@@ -25,7 +25,7 @@ const removeBlanks = require('../../lib/remove_blank_fields')
 // it will also set `req.user`
 const requireToken = passport.authenticate('bearer', { session: false })
 
-const removeIngredient = ('../../lib/remove_ingredient')
+const removeIngredient = require('../../lib/remove_ingredient')
 
 // instantiate a router (mini app that only handles routes)
 const router = express.Router()
@@ -51,6 +51,7 @@ router.patch('/recipes/:id', requireToken, removeBlanks, (req, res, next) => {
     .then(recipe => {
       // pass the `req` object and the Mongoose record to `requireOwnership`
       // it will throw an error if the current user isn't the owner
+      console.log(recipe)
       requireOwnership(req, recipe)
 
       // pass the result of Mongoose's `.update` to the next `.then`
@@ -63,9 +64,10 @@ router.patch('/recipes/:id', requireToken, removeBlanks, (req, res, next) => {
     .catch(next)
 })
 
-router.patch('/recipes/:id', requireToken, removeBlanks, (req, res, next) => {
+router.patch('/recipes/:id/ingredients', requireToken, removeBlanks, (req, res, next) => {
   const id = req.params.id
-  const ingredId = req.body.ingredient.ingredId
+  const ingredId = req.body.ingredient.id
+  console.log(ingredId)
   Recipe.findById(id)
     .then(recipe => {
       return removeIngredient(recipe, ingredId)

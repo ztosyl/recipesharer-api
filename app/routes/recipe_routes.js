@@ -69,9 +69,9 @@ router.post('/recipes', requireToken, (req, res, next) => {
 // UPDATE
 // PATCH /examples/5a7db6c74d55bc51bdf39793
 router.patch('/recipes/:id', requireToken, removeBlanks, (req, res, next) => {
-  // if the client attempts to change the `owner` property by including a new
+  // if the client attempts to change the `author` property by including a new
   // owner, prevent that by deleting that key/value pair
-  delete req.body.recipe.owner
+  delete req.body.recipe.author
   Recipe.findById(req.params.id)
     .then(handle404)
     .then(recipe => {
