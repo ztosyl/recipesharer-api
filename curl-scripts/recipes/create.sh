@@ -7,14 +7,14 @@ curl "${API}${URL_PATH}" \
   --include \
   --request POST \
   --header "Content-Type: application/json" \
-  --header "Authorization: Bearer 9d9a2cc6ded0b14e72c94a5ca3e0584a" \
+  --header "Authorization: Bearer ${TOKEN}" \
   --data '{
     "recipe": {
-      "title": "Rice Krispies Treats",
-      "meal": "Dessert",
+      "title": "Grilled Peanut Butter and Jelly",
+      "meal": "Lunch",
       "difficulty": "Easy",
-      "steps": ["In large saucepan melt butter over low heat. Add marshmallows and stir until completely melted. Remove from heat.", "Add cereal. Stir until well coated.", "Using buttered spatula or wax paper evenly press mixture into 13 x 9 x 2-inch pan coated with cooking spray. Cool. Cut into 2-inch squares. Best if served the same day."],
-      "author": "5ebd52d34e82a845ec9787b2"
+      "steps": ["Heat griddle or skillet to 350 degrees F (175 degrees C).", "Spread butter on one side of each slice of bread. Spread peanut butter on unbuttered side of one slice of bread, and jelly on the other.", "Place one slice, buttered side down on the griddle. Top with other slice, so that peanut butter and jelly are in the middle.", "Cook for 4 minutes on each side, or until golden brown, and heated through."],
+      "author": "'"${ID}"'"
     }
   }'
 

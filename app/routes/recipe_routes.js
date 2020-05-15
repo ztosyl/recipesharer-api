@@ -34,7 +34,7 @@ router.get('/recipes', requireToken, (req, res, next) => {
     .then(recipes => {
       return recipes.map(recipes => recipes.toObject())
     })
-    .then(recipes => res.status(200).json({ recipe: recipes }))
+    .then(recipes => res.status(200).json({ recipes: recipes }))
     .catch(next)
 })
 

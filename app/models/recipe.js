@@ -14,7 +14,7 @@ const recipeSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  ingredients: [ingredientSchema],
+  ingredients: [],
   steps: [],
   author: {
     type: mongoose.Schema.Types.ObjectId,
