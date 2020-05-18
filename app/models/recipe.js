@@ -21,9 +21,20 @@ const recipeSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
-  comments: [commentSchema]
+  comments: [commentSchema],
+  ratings: [Number]
 }, {
   timestamps: true
+})
+
+recipeSchema.virtual('ratingsAvg', function () {
+  const ratings = this.ratings
+  let sum = 0
+  for (let i = 0; i < ratings.length; i++) {
+    sum = sum + ratings[i]
+  }
+  const avg = Math.round(sum / ratings.length)
+  return avg
 })
 
 module.exports = mongoose.model('Example', recipeSchema)

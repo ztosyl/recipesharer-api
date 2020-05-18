@@ -106,4 +106,22 @@ router.delete('/recipes/:id', requireToken, (req, res, next) => {
     .catch(next)
 })
 
+// POST RATING
+router.patch('/recipes/:id/comments', requireToken, removeBlanks, (req, res, next) => {
+  // set owner of new example to be current user
+  const id = req.params.id
+  const rating = req.body.rating
+  Recipe.findById(id)
+    .then(handle404)
+    .then(recipe => {
+      recipe.ratings.push(rating)
+      return recipe.save()
+    })
+    .then(recipe => res.sendStatus(204))
+    // if an error occurs, pass it off to our error handler
+    // the error handler needs the error message and the `res` object so that it
+    // can send an error message back to the client
+    .catch(next)
+})
+
 module.exports = router
