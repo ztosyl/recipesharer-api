@@ -107,7 +107,7 @@ router.delete('/recipes/:id', requireToken, (req, res, next) => {
 })
 
 // POST RATING
-router.patch('/recipes/:id/comments', requireToken, removeBlanks, (req, res, next) => {
+router.patch('/recipes/:id/ratings', requireToken, removeBlanks, (req, res, next) => {
   // set owner of new example to be current user
   const id = req.params.id
   const rating = req.body.rating
