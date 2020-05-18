@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const ingredientSchema = require('./ingredients')
+const commentSchema = require('./comment')
 
 const recipeSchema = new mongoose.Schema({
   title: {
@@ -20,7 +20,8 @@ const recipeSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true
-  }
+  },
+  comments: [commentSchema]
 }, {
   timestamps: true
 })

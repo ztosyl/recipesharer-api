@@ -7,6 +7,7 @@ const cors = require('cors')
 // const ingredientRoutes = require('./app/routes/ingredient_routes')
 const recipeRoutes = require('./app/routes/recipe_routes')
 const userRoutes = require('./app/routes/user_routes')
+const commentRoutes = require('./app/routes/comment_routes')
 
 // require middleware
 const errorHandler = require('./lib/error_handler')
@@ -63,6 +64,7 @@ app.use(requestLogger)
 
 // register route files
 // app.use(ingredientRoutes)
+app.use(commentRoutes)
 app.use(recipeRoutes)
 app.use(userRoutes)
 

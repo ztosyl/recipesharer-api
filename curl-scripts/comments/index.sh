@@ -1,7 +1,7 @@
 API="http://localhost:4741"
-URL_PATH="/recipes/${ID}/ingredients"
+URL_PATH="/recipes"
 
-curl "${API}${URL_PATH}" \
+curl "${API}${URL_PATH}/${ID}/comments" \
   --include \
   --request GET \
   --header "Authorization: Bearer ${TOKEN}"
