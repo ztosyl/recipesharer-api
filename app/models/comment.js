@@ -1,5 +1,6 @@
 'use strict'
 
+// require mongoose and user for the ref
 const mongoose = require('mongoose')
 const User = require('./user')
 
